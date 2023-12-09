@@ -3,7 +3,7 @@ agro-cd:
     enabled: true
 
   controller:
-    replicas: 1
+    replicas: 2
 
   server:
     autoscaling:
@@ -16,4 +16,4 @@ agro-cd:
       minReplicas: 2
 
   applicationSet:
-    replicas: 2
+    replicas: 1
