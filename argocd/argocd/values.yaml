@@ -1,19 +1,15 @@
-agro-cd:  
-  redis-ha:
-    enabled: true
-
+argo-cd:
   controller:
+    enabled: true
     replicas: 2
-
+  
   server:
-    autoscaling:
-      enabled: true
-      minReplicas: 2
-
+    enabled: true
+    replicas: 2
+  
   repoServer:
-    autoscaling:
-      enabled: true
-      minReplicas: 2
-
+    enabled: true
+    replicas: 2
+  
   applicationSet:
-    replicas: 1
+    replicas: 2
