@@ -1,7 +1,7 @@
 argo-cd:
   controller:
     enabled: true
-    replicas: 2
+    replicas: 1
   
   server:
     enabled: true
