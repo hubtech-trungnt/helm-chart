@@ -17,16 +17,17 @@ argo-cd:
 
     ingress:
       enableed: true
-      className: "nginx"
+      ingressClassName: nginx
       annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
         cert-manager.io/cluster-issuer: letsencrypt-prod
-        kubernetes.io/tls-acme: "true"
+        # kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       
       hosts:
-        - host: argo-cd.devops.chancode.click
-          paths:
-            - path: /
-              pathType: Prefix
+        - argo-cd.devops.chancode.click
+      paths:
+        - /
       tls:
         - secretName: argocd-devops-chancode-tls
           hosts:
