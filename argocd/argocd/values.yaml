@@ -7,13 +7,13 @@ argo-cd:
     enabled: true
     replicas: 1
 
-    # config:  # Related to issue https://github.com/argoproj/argo-cd/issues/1704
-    #   resource.customizations: |
-    #     extensions/Ingress:
-    #         health.lua: |
-    #           hs = {}
-    #           hs.status = "Healthy"
-    #           return hs
+    config:  # Related to issue https://github.com/argoproj/argo-cd/issues/1704
+      resource.customizations: |
+        extensions/Ingress:
+            health.lua: |
+              hs = {}
+              hs.status = "Healthy"
+              return hs
 
     ingress:
       enableed: true
@@ -31,6 +31,7 @@ argo-cd:
         - secretName: argocd-devops-chancode-tls
           hosts:
             - argo-cd.devops.chancode.click
+      https: true
 
   
   repoServer:
