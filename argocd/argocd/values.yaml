@@ -6,6 +6,32 @@ argo-cd:
   server:
     enabled: true
     replicas: 1
+
+    # config:  # Related to issue https://github.com/argoproj/argo-cd/issues/1704
+    #   resource.customizations: |
+    #     extensions/Ingress:
+    #         health.lua: |
+    #           hs = {}
+    #           hs.status = "Healthy"
+    #           return hs
+
+    ingress:
+      enableed: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        kubernetes.io/tls-acme: "true"
+      
+      hosts:
+        - host: argo-cd.devops.chancode.click
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: argocd-devops-chancode-tls
+          hosts:
+            - argo-cd.devops.chancode.click
+
   
   repoServer:
     enabled: true
