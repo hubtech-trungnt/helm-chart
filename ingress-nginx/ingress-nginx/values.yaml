@@ -1,18 +1,18 @@
-ingress-nginx:
-  controller:
-    # -- Use a `DaemonSet` or `Deployment`
-    kind: DaemonSet
+# ingress-nginx:
+controller:
+  # -- Use a `DaemonSet` or `Deployment`
+  kind: DaemonSet
 
-    service:
-      ## Ref: https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-typeloadbalancer
-      externalTrafficPolicy: "Local"
-      loadBalancerIP: "128.140.26.162"
-      nodePorts:
-        http: 30080
-        https: 30443
+  service:
+    ## Ref: https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-typeloadbalancer
+    externalTrafficPolicy: "Local"
+    loadBalancerIP: "128.140.26.162"
+    nodePorts:
+      http: 30080
+      https: 30443
 
-    # -- Will add custom configuration options to Nginx https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
-    config:
-      use-forwarded-headers: "true"
-      compute-full-forwarded-for: "true"
-      use-proxy-protocol: "true"
+  # -- Will add custom configuration options to Nginx https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
+  config:
+    use-forwarded-headers: "true"
+    compute-full-forwarded-for: "true"
+    use-proxy-protocol: "true"
