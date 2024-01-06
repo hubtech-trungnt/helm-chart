@@ -20,3 +20,4 @@ spec:
     syncOptions:
     - PrunePropagationPolicy=background
     - CreateNamespace=true
+    - ServerSideApply=true
