@@ -20,7 +20,7 @@ kube-prometheus-stack:
         apiVersion: 1
         datasources:
           - name: Prometheus
-            isDefault: true
+            isDefault: false
             type: prometheus
             url: http://kube-prometheus-stack-prometheus:9090
           # - name: Loki
