@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: prometheus
 
 spec:
   destination:
-    namespace: ingress-nginx
+    namespace: monitor
     server: https://kubernetes.default.svc
   project: demo-argo-ui
 
