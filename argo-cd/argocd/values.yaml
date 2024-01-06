@@ -7,32 +7,32 @@ argo-cd:
     enabled: true
     replicas: 1
 
-    # config:  # Related to issue https://github.com/argoproj/argo-cd/issues/1704
-    #   resource.customizations: |
-    #     extensions/Ingress:
-    #         health.lua: |
-    #           hs = {}
-    #           hs.status = "Healthy"
-    #           return hs
+    config:  # Related to issue https://github.com/argoproj/argo-cd/issues/1704
+      resource.customizations: |
+        extensions/Ingress:
+            health.lua: |
+              hs = {}
+              hs.status = "Healthy"
+              return hs
 
-    # ingress:
-    #   enableed: true
-    #   ingressClassName: nginx
-    #   annotations:
-    #     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    #     cert-manager.io/cluster-issuer: letsencrypt-prod
-    #     kubernetes.io/tls-acme: "true"
-    #     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    ingress:
+      enableed: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       
-    #   hosts:
-    #     - argo-cd.devops.chancode.click
-    #   paths:
-    #     - /
-    #   tls:
-    #     - secretName: argocd-devops-chancode-tls
-    #       hosts:
-    #         - argo-cd.devops.chancode.click
-    #   https: true
+      hosts:
+        - argo.devops.chancode.click
+      paths:
+        - /
+      tls:
+        - secretName: argo-devops-chancode-tls
+          hosts:
+            - argo.devops.chancode.click
+      https: true
 
   
   repoServer:
