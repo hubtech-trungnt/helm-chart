@@ -7,6 +7,8 @@ deploychart:
 
   kind: Deployment
 
+  fullnameOverride: demo-nginx
+
   image:
     repository: nginx
     tag: stable-alpine3.17
@@ -23,7 +25,8 @@ deploychart:
     hosts:
       - host: devops.chancode.click
         paths:
-          - path: /
+        - path: /
+          pathType: Prefix
     tls:
       - secretName: devops-demo-tls
         hosts:
