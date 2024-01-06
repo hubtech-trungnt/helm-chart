@@ -16,7 +16,7 @@ argo-cd:
               return hs
 
     ingress:
-      enableed: true
+      enabled: true
       ingressClassName: nginx
       annotations:
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
