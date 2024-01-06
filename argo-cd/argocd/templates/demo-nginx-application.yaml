@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-nginx
+
+spec:
+  destination:
+    namespace: demo-nginx
+    server: https://kubernetes.default.svc
+  project: demo-argo-ui
+
+  source:
+    path: demo/nginx
+    repoURL: https://github.com/hubtech-trungnt/helm-chart.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - PrunePropagationPolicy=background
+    - CreateNamespace=true  
